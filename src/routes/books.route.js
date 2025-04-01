@@ -1,6 +1,6 @@
 async function booksRoute(fastify, options) {
 
-  fastify.get('/', async (request, reply) => {
+  fastify.get('/get', async (request, reply) => {
     const books = await fastify.prisma.book.findMany();
     return books;
   });
@@ -14,7 +14,7 @@ async function booksRoute(fastify, options) {
     },
   };
 
-  fastify.get('/:id', { schema: getBookSchema }, async (request, reply) => {
+  fastify.get('/:id/get', { schema: getBookSchema }, async (request, reply) => {
     //  ⚙️🔥 write your code here ⚙️🔥
     // tips : look about findUnique
     reply.code(404).send({ error: 'Not implemented' });
